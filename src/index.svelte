@@ -1,3 +1,5 @@
+<svelte:options tag="svelte-progresscircle" />
+
 <script>
   export let value = 0;
   export let max = 100;
@@ -26,41 +28,40 @@
 </script>
 
 <style>
-  svg {
-    fill: var(--progress-fill, transparent);
+  .svelte-progresscircle svg {
+    fill: var(--progress-fill, #def);
     height: 100%;
     position: absolute;
     stroke-linecap: var(--progress-linecap, round);
     width: 100%;
   }
-  path:first-child {
-    stroke: var(--progress-trackcolor, grey);
+  .svelte-progresscircle svg path:first-child {
+    stroke: var(--progress-trackcolor, #bdf);
     stroke-width: var(--progress-trackwidth, 9px);
   }
-  path:last-child {
-    stroke: var(--progress-color, lightgreen);
-    stroke-width: var(--progress-width, 10px);
+  .svelte-progresscircle svg path:last-child {
+    stroke: var(--progress-color, #28e);
+    stroke-width: var(--progress-width, 9px);
   }
-  div {
-    height: 100%;
+  div.svelte-progresscircle {
+    height: 28px;
     position: relative;
-    width: 100%;
+    width: 28px;
   }
-  span {
+  div.svelte-progresscircle span {
+    font-size: 14px;
+    font-weight: 300;
     left: 50%;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
   }
 </style>
-<div>
+<div class="svelte-progresscircle">
   <svg viewBox="0 0 100 100">
     <path d="M50,5A45 45 0 1 1 49.9999 5" />
     <path d="{progressPath()}" />
   </svg>
-  <div>
-    <slot>
-      <span>{value}</span>
-    </slot>
+  <div class="svelte-progresscircle">    
   </div>
 </div>
